@@ -1,9 +1,16 @@
-<mat-toolbar color="primary">
-  <span>Angular Quiz</span>
-  <span class="spacer"></span>
-  <input
-    matInput
-    placeholder="Search user by ID"
-    (input)="onSearch($event.target.value)"
-  />
-</mat-toolbar>
+<header class="modern-header">
+  <div class="header-content">
+    <div class="logo-section">
+      <div class="logo-icon">👥</div>
+      <span class="app-title">User Directory</span>
+    </div>
+    <div class="search-section">
+      <input
+        class="search-input"
+        placeholder="Search user by ID"
+        (input)="onSearch($event.target.value)"
+      />
+      <span class="search-icon">🔍</span>
+    </div>
+  </div>
+</header>

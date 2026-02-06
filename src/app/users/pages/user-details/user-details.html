@@ -1,28 +1,59 @@
-<div *ngIf="notFound">
-  <mat-card>
-    <mat-card-content>
-      <p>User not found.</p>
-    </mat-card-content>
+<div class="user-details-page">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Loading user details...</p>
+  </div>
 
-    <button mat-button color="primary" (click)="goBack()">
-      ← Back
-    </button>
-  </mat-card>
+  <!-- Not Found State -->
+  <div *ngIf="notFound && !loading" class="not-found-container">
+    <div class="error-icon">⚠️</div>
+    <h2>User Not Found</h2>
+    <p>The user you're looking for doesn't exist. Please check the ID and try again.</p>
+    <button class="back-button" (click)="goBack()">← Back to Users</button>
+  </div>
+
+  <!-- User Details Card -->
+  <div *ngIf="user && !loading" class="user-details-container">
+    <div class="user-profile-card">
+      <div class="profile-header">
+        <div class="avatar-section">
+          <img [src]="user.avatar" class="user-avatar" />
+          <div class="status-badge online">Online</div>
+        </div>
+        <div class="user-header-info">
+          <h1 class="user-full-name">{{ user.first_name }} {{ user.last_name }}</h1>
+          <p class="user-id-badge">User ID: #{{ user.id }}</p>
+        </div>
+      </div>
+
+      <div class="profile-divider"></div>
+
+      <div class="profile-content">
+        <div class="info-section">
+          <h3 class="section-title">Contact Information</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">📧 Email</span>
+              <span class="info-value">{{ user.email }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="info-section">
+          <h3 class="section-title">Details</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">🆔 User ID</span>
+              <span class="info-value">#{{ user.id }}</span>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="profile-actions">
+        <button class="action-button primary" (click)="goBack()">← Back to Users</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-<mat-card *ngIf="user">
-  <img mat-card-image [src]="user.avatar" />
-
-  <mat-card-title>
-    {{ user.first_name }} {{ user.last_name }}
-  </mat-card-title>
-
-  <mat-card-content>
-    <p><strong>ID:</strong> {{ user.id }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-  </mat-card-content>
-
-  <button mat-button color="primary" (click)="goBack()">
-    ← Back
-  </button>
-</mat-card>

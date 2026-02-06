@@ -1,17 +1,254 @@
+.users-page {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  padding: 60px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.page-header {
+display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  gap:0;
+  h1 {
+    font-size: 2.4rem;
+    color:#6D66C9;
+  }
+
+  .subtitle {
+    color: #64748b;
+    font-weight: 500;
+  }
+}
+
 .users-container {
-  display: flex;
+  display:flex;
   justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin: 24px;
+  gap: 2%;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .user-card {
-  width: 220px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: fadeInUp 0.6s ease backwards;
+  animation-delay: calc(var(--index, 0) * 0.1s);
+
+  &:hover {
+    transform: translateY(-16px);
+    box-shadow: 0 30px 60px rgba(102, 126, 234, 0.35);
+
+    .card-image-wrapper {
+      transform: scale(1.08);
+
+      .overlay {
+        opacity: 0.4;
+      }
+
+      .card-badge {
+        transform: scale(1.1);
+      }
+    }
+
+    .card-content {
+      .user-name {
+        color: #667eea;
+      }
+
+      .view-btn {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+  }
 }
 
-.user-card:hover {
-  transform: translateY(-4px);
+  .user-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+.card-content {
+  padding: 10px 24px;
 }
+
+.user-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.4px;
+  transition: color 0.3s ease;
+  line-height: 1.3;
+}
+
+.user-id {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0 0 20px 0;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.view-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  transform: translateY(8px) scale(0.95);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+
+  &:active {
+    transform: translateY(4px) scale(0.98);
+  }
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  margin-top: 40px;
+  border-radius: 8px;
+  max-width: fit-content;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #64748b;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .users-container {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .users-page {
+    padding: 40px 16px;
+  }
+
+  .users-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .page-header {
+    margin-bottom: 40px;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .card-image-wrapper {
+    height: 200px;
+  }
+
+  .user-card {
+    &:hover {
+      transform: translateY(-12px);
+    }
+  }
+
+  .view-btn {
+    display: inline-block;
+    opacity: 1;
+    // transform: translateY(0) scale(1);
+    padding: 10%;
+
+  }
+}
+
+@media (max-width: 480px) {
+  .users-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+  }
+
+  .page-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .card-content {
+    padding: 0px 8px;
+    margin-bottom: 6px;
+  }
+
+  .user-name {
+    font-size: 1.1rem;
+  }
+
+  .view-btn {
+    margin: 11px 0 0 0;
+    opacity: 1;
+    transform: none;
+    display: block;
+
+    width: 100%;
+    text-align: center;
+
+    padding: 12px 0;
+    margin-top: 12px;
+
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.25);
+  }
+
+  .user-card:hover {
+    transform: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+ }
+
+
+

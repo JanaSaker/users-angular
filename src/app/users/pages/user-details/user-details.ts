@@ -1,17 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 
 import { UsersService } from '../../../core/services/users.services';
 
 @Component({
   standalone: true,
   imports: [
-    CommonModule,
-    MatButtonModule,
-    MatCardModule
+    CommonModule
   ],
   templateUrl: './user-details.html',
   styleUrls: ['./user-details.scss']

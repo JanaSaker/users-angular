@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 import { UsersService } from '../../../core/services/users.services';
@@ -10,7 +9,6 @@ import { UsersService } from '../../../core/services/users.services';
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule,
     MatPaginatorModule
   ],
   templateUrl: './user-list.html',
