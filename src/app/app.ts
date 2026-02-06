@@ -1,12 +1,24 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+import { HeaderComponent } from './shared/header/header';
+import { LoadingService } from './core/services/loading.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    
+    MatProgressBarModule,
+    HeaderComponent
+  ],
+  templateUrl: './app.html'
 })
-export class App {
-  protected readonly title = signal('my-angular-app');
+export class AppComponent {
+  loadingService = inject(LoadingService);
+  loading$ = this.loadingService.loadingState$;
 }

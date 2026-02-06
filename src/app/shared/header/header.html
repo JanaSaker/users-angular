@@ -1,1 +1,9 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+  <span>Angular Quiz</span>
+  <span class="spacer"></span>
+  <input
+    matInput
+    placeholder="Search user by ID"
+    (input)="onSearch($event.target.value)"
+  />
+</mat-toolbar>
