@@ -18,6 +18,8 @@ import { UsersService } from '../../../core/services/users.services';
 })
 export class UserDetailsComponent implements OnInit {
   user: any;
+  notFound = false;
+  loading = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,9 +29,19 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.loading = true;
 
-    this.usersService.getUserById(id).subscribe(res => {
-      this.user = res.data;
+    this.usersService.getUserById(id).subscribe({
+      next: res => {
+        this.user = res?.data ?? null;
+        this.notFound = !this.user;
+        this.loading = false;
+      },
+      error: () => {
+        this.user = null;
+        this.notFound = true;
+        this.loading = false;
+      }
     });
   }
 

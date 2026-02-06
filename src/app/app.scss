@@ -1,0 +1,14 @@
+/* Make the Material progress bar fixed and visible at the top */
+.app-progress {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 2000;
+	height: 4px;
+}
+
+/* Push the app content below the fixed progress bar to avoid overlap */
+:host ::ng-deep router-outlet + * {
+	padding-top: 6px;
+}

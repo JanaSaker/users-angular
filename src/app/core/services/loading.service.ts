@@ -8,10 +8,12 @@ export class LoadingService {
   loadingState$ = this.loading$.asObservable();
 
   show() {
-    this.loading$.next(true);
+    console.log('[LoadingService] show()');
+    Promise.resolve().then(() => this.loading$.next(true));
   }
 
   hide() {
-    this.loading$.next(false);
+    console.log('[LoadingService] hide()');
+    Promise.resolve().then(() => this.loading$.next(false));
   }
 }

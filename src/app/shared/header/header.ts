@@ -19,8 +19,17 @@ export class HeaderComponent {
     this.search$
       .pipe(debounceTime(300))
       .subscribe(value => {
-        const id = Number(value);
-        if (!isNaN(id)) {
+        const trimmed = (value || '').toString().trim();
+
+        // If the input was cleared, go back to the users list page
+        if (trimmed === '') {
+          this.router.navigate(['/users']);
+          return;
+        }
+
+        const id = Number(trimmed);
+        // Only navigate when a positive numeric id is provided
+        if (!isNaN(id) && id > 0) {
           this.router.navigate(['/users', id]);
         }
       });

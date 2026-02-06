@@ -1,3 +1,15 @@
+<div *ngIf="notFound">
+  <mat-card>
+    <mat-card-content>
+      <p>User not found.</p>
+    </mat-card-content>
+
+    <button mat-button color="primary" (click)="goBack()">
+      ← Back
+    </button>
+  </mat-card>
+</div>
+
 <mat-card *ngIf="user">
   <img mat-card-image [src]="user.avatar" />
 

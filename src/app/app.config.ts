@@ -11,7 +11,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(
       withInterceptors([
-        apiKeyInterceptor,   // ✅ adds x-api-key
+        apiKeyInterceptor,   // ✅ adds x-api-key when configured
         loadingInterceptor   // ✅ shows loading bar
       ])
     )
