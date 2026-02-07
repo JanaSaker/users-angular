@@ -1,22 +1,14 @@
 .modern-header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   box-shadow: 0 4px 20px rgba(102, 126, 234, 0.35);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 16px 24px;
-  width: 100%;
+  justify-content: space-around;
+  padding:10px 0px 10px 0px;
 }
 
 .logo-section {
@@ -91,9 +83,10 @@
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-    padding: 14px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
   }
 
   .logo-section {
@@ -105,6 +98,6 @@
   }
 
   .search-section {
-    max-width: 100%;
+    max-width:65%;
   }
 }
